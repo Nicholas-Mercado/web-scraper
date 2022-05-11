@@ -6,8 +6,8 @@ print("""
         --> Welcome to Citation Station <--
         
         Input a Wikipedia URL and you
-        will get back a how many citations
-        needed on that page and list of
+        will get back how many citations
+        that page is missing and list of
         those citations 
       
 """)
@@ -23,8 +23,9 @@ def get_citations_needed_count():
     for cites in results:
         count_of_cites += 1
         
-    print(count_of_cites)
-    return count_of_cites
+    print(f"The url you entered : {wiki_url}")
+    print(f"Has {count_of_cites} citations needed! ")
+    return
 
 get_citations_needed_count()
 
