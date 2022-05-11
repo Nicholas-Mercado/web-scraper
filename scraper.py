@@ -12,6 +12,7 @@ print("""
       
 """)
 wiki_url = input("> ")
+# wiki_url = "https://en.wikipedia.org/wiki/History_of_Mexico"  <---test
 page = requests.get(wiki_url)
     
 def get_citations_needed_count():
@@ -27,7 +28,15 @@ def get_citations_needed_count():
     print(f"Has {count_of_cites} citations needed! ")
     return
 
-get_citations_needed_count()
+
 
 def get_citations_needed_report():
-    pass
+    
+    soup = BeautifulSoup(page.content, "html.parser")
+    results = soup.find_all(title = 'Wikipedia:Citation needed')
+    for p in results:
+        just_text = p.parent.parent.parent
+        print(just_text.get_text())
+
+get_citations_needed_count()
+get_citations_needed_report()
